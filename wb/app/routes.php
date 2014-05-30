@@ -48,6 +48,11 @@ Route::get('test', function()
 });
 
 Route::get('phpmyadmin', function()
-	{
-		return View::make('../../www/phpmyadmin');
-	});
+{
+  return View::make('../../www/phpmyadmin');  
+});
+
+Route::get('test1', function()
+{
+  return 'test1';
+});
