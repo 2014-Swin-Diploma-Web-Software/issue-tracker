@@ -44,7 +44,7 @@ Route::resource('status', 'StatusController');
 
 Route::get('test', function()
 {
-  var_dump(DB::select('select * from test'));
+  var_dump(DB::select('select * from migrations'));
 });
 
 Route::get('phpmyadmin', function()
