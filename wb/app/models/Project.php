@@ -11,13 +11,13 @@ class Project extends Eloquent  {
 		
 		public function users() {
 			
-			return $this->belongsToMany('users','project_user','project_id','user_id');
+			return $this->belongsToMany('User','project_user','project_id','user_id');
 		}
 		
 		
 	   public function issuesprojects(){
 	   	
-		return $this->hasMany('issues');
+		return $this->hasMany('Issue');
 		
 	   }
 	   

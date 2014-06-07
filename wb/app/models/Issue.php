@@ -7,16 +7,16 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Issue extends Eloquent  {
 	
-	protected $fillable = array('issue_title', 'issue_desc', 'status_id','priority_id');
+	protected $fillable = array('issue_title', 'issue_desc', 'status_id','priority_id','related_project');
 		
 		public function userissues()
 		{
-			return $this->belongToMany('Users','issue_user','issue_id','user_id');
+			return $this->belongToMany('User','issue_user','issue_id','user_id');
 		}
 		
 	public function projectissues()
 		{
-			return $this->belongTo('projects');
+			return $this->belongTo('Project');
 		}
 
 

@@ -21,7 +21,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
 	Public function projects(){
-		return $this->belongsToMany('projects','project_user','project_id','user_id');
+		return $this->belongsToMany('Project','project_user','project_id','user_id');
 		
 	}
 	
