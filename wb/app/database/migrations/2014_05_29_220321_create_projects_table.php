@@ -16,8 +16,8 @@ class CreateProjectsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('title');
-			$table->unsignedInteger('issue_id');
-			$table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
+			//$table->unsignedInteger('issue_id');
+			//$table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

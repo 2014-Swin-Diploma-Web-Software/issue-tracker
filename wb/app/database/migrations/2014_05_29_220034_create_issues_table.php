@@ -17,10 +17,14 @@ class CreateIssuesTable extends Migration {
 			$table->increments('id');
 			$table->string('issue_title');
 			$table->string('issue_desc');
-			$table->unsignedInteger('status_id');
-			$table->foreign('status_id')->references('id')->on('status')->onDelete('cascade');
-			$table->unsignedInteger('priority_id');
-			$table->foreign('priority_id')->references('id')->on('priority')->onDelete('cascade');
+			$table->integer('status_id');
+			$table->Integer('priority_id');
+			//$table->unsignedInteger('status_id');
+			//$table->foreign('status_id')->references('id')->on('status')->onDelete('cascade');
+			//$table->unsignedInteger('priority_id');
+			//$table->foreign('priority_id')->references('id')->on('priority')->onDelete('cascade');
+			$table->integer('related_project')->unsigned();
+            $table->foreign('related_project')->references('id')->on('projects');
 			$table->timestamps();
 		});
 	}
