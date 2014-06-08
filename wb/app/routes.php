@@ -15,8 +15,8 @@
 {
 	return View::make('hello');
 });*/
-
-Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
+Route::resource('issues', 'IssueController');
+//Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
 
 Route::get('/about', 'PagesController@about');
 
