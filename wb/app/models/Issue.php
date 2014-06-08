@@ -9,12 +9,12 @@ class Issue extends Eloquent  {
 	
 	protected $fillable = array('issue_title', 'issue_desc', 'status_id','priority_id','related_project');
 		
-		public function userissues()
+		public function userIssues()
 		{
 			return $this->belongToMany('User','issue_user','issue_id','user_id');
 		}
 		
-	public function projectissues()
+	public function projectIssues()
 		{
 			return $this->belongTo('Project');
 		}

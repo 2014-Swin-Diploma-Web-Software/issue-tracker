@@ -12,7 +12,7 @@ class IssueController extends \BaseController {
 		
 		$issues = Issue::all();
 
-		// load the view and pass the nerds
+		// load the view and pass the issues
 		return View::make('issue.index')
 			->with('issues', $issues);
 	}
@@ -77,7 +77,7 @@ class IssueController extends \BaseController {
 	{
 		$issue = Issue::find($id);
 
-		// show the view and pass the nerd to it
+		// show the view and pass the issue to it
 		return View::make('issue.show')
 			->with('issue', $issue);
 	}
@@ -93,7 +93,7 @@ class IssueController extends \BaseController {
 	{
 		$issue = Issue::find($id);
 
-		// show the edit form and pass the nerd
+		// show the edit form and pass the issue
 		return View::make('issue.edit')
 			->with('issue', $issue);
 	}
@@ -127,8 +127,8 @@ class IssueController extends \BaseController {
 		} else {
 			// store
 			$issue = Issue::find($id);
-			$issue->issue_title      = Input::get('issue_title');
-			$issue->issue_desc      = Input::get('issue_desc');
+			$issue->issue_title  = Input::get('issue_title');
+			$issue->issue_desc   = Input::get('issue_desc');
 			$issue->status_id = Input::get('status_id');
 			$issue->priority_id = Input::get('priority_id');
 			$issue->related_project= Input::get('related_project');
@@ -156,6 +156,33 @@ class IssueController extends \BaseController {
 		Session::flash('message', 'Successfully deleted the issue!');
 		return Redirect::to('issues');
 	}
+	
+	public function assignUser($userid,$issue_id){
+		
+		$issue = Issue::find($issue_id);
+		$issue->userIssues()->attach($userid); 
+	
+	}
+
+	public function unAssignUser($userid,$issue_id){
+		
+		$issue = Issue::find($issue_id);
+		$issue->userIssues()->detach($userid); 
+	
+	}	
+
+    public function getIssueWithRespectiveUsers($issue_id){
+    		$issue = Issue::find($issue_id);
+			$issue->userIssues()->all();
+		
+    }
+
+     
+
+
+
 
 
 }
+
+
