@@ -177,6 +177,13 @@ class IssueController extends \BaseController {
 		
     }
 
+
+   public function retrieveIssueUsers(){
+   	
+	$issueusers = Issue::find(1)->userIssues;
+	return View::make('issue.userissuelist')
+			->with('issues', $issueusers);
+   }
      
 
 
